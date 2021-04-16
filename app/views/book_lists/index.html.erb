@@ -1,5 +1,7 @@
 <% @book_lists.each do |book_list| %>
 <div>
+  <%= link_to book_list_path(book_list.id) do %>
+  <% end %>
   <p>Title：<%= book_list.title %></p>
   <p>Opinion：<%= book_list.opinion %></p>
   <p>ユーザーネーム：<%= book_list.user.name %></p>

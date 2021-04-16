@@ -1,0 +1,8 @@
+<div class="post-body">
+  <p>Title：<%= @book_list.title %></p>
+  <p>Opinion：<%= @book_list.opinion %></p>
+  <p>ユーザーネーム：<%= @book_list.user.name %></p>
+    <% if @book_list.user == current_user %>
+    <%= link_to "削除", book_list_path(@book_list), method: :delete %>
+  <% end %>
+</div>

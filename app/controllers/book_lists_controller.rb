@@ -1,4 +1,5 @@
 class BookListsController < ApplicationController
+
   def new
     @book_list = BookList.new
   end
@@ -11,20 +12,24 @@ class BookListsController < ApplicationController
   end
 
   def index
-    @book_lists = BookList.all  
+    @book_lists = BookList.all
   end
 
   def show
+    @book_list = BookList.find(params[:id])
   end
 
   def destroy
+    @book_list = BookList.find(params[:id])
+    @book_list.destroy
+    redirect_to book_lists_path
   end
 
 
-   private
+  private
 
   def book_list_params
-    params.require(:book_list).permit(:title, :opinion)
+   params.require(:book_list).permit(:title, :opinion)
   end
 
 end
