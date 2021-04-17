@@ -1,9 +1,19 @@
+<table>
+ <tr>
+   <th></th>
+   <th>Title</th>
+   <th>Opinion</th>
+ </tr><h1>Books</h1>
+
 <% @book_lists.each do |book_list| %>
-<div>
-  <%= link_to book_list_path(book_list.id) do %>
-  <% end %>
-  <p>Title：<%= book_list.title %></p>
-  <p>Opinion：<%= book_list.opinion %></p>
-  <p>ユーザーネーム：<%= book_list.user.name %></p>
-</div>
+ <tr>
+   <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></th>
+   <th>
+     <%= link_to book_list_path(book_list.id) do %>
+     <p><%= book_list.title %></p>
+     <% end %>
+   </th>
+   <th><%= book_list.opinion %></th>
+  </tr>
 <% end %>
+</table>
