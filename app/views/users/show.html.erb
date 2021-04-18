@@ -1,7 +1,22 @@
-<div class="profile-container">
-  <h3 class="profile-name"><%= @user.name %></h3>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-</div>
+ <tr>
+   <th></th>
+   <th>Title</th>
+   <th>Opinion</th>
+ </tr><h1>Books</h1>
+
+<% @book_lists.each do |book_list| %>
+ <tr>
+   <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+     <% if @user == current_user %>
+      <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+     <% end %>
+   </th>
+   <th>
+     <%= link_to book_list_path(book_list.id) do %>
+     <p><%= book_list.title %></p>
+     <% end %>
+   </th>
+   <th><%= book_list.opinion %></th>
+  </tr>
+<% end %>
+</table>

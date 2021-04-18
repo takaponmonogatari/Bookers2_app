@@ -1,9 +1,19 @@
-<div class="post-body">
-  <p>Title：<%= @book_list.title %></p>
-  <p>Opinion：<%= @book_list.opinion %></p>
-  <p>ユーザーネーム：<%= @book_list.user.name %></p>
-    <% if @book_list.user == current_user %>
-    <%= link_to "削除", book_list_path(@book_list), method: :delete %>
-  <% end %>
-</div>
+<table>
+  <tr>
+   <th></th>
+   <th></th>
+   <th></th>
+ </tr><h1>Book detail</h1>
 
+  <tr>
+   <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
+     <%= link_to user_path(@book_list.user.id) do %>
+      <p><%= @book_list.user.name %></p>
+     <% end %>
+
+   </th>
+   <th><%= @book_list.title %></th>
+   <th><%= @book_list.opinion %></th>
+  </tr>
+
+</table>

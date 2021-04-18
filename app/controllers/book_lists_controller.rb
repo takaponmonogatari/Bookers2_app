@@ -16,7 +16,9 @@ class BookListsController < ApplicationController
   end
 
   def show
+    @book_lists = BookList.all
     @book_list = BookList.find(params[:id])
+    @user = @book_list.user
   end
 
   def destroy
