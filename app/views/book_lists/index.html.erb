@@ -1,25 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-     <h1>User info</h1>
-   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
-
-     <h6>Name</h6>
-      <%= @user.name %><br>
-     <h6>Introduction</h6>
-      <%= @user.introduction %><br>
-      <%= link_to "プロフィール編集", edit_user_path(@user) %>
+  <%= render "users/list", book_list: @book_list, user: @user %>
 
 
-
-     <h1>New book</h1>
-      <%= form_with model: @book_list, local:true do |f| %>
-      <h6>Title</h6>
-      <%= f.text_field :title %>
-      <h6>Opinion</h6>
-       <%= f.text_area :body %>
-       <%= f.submit 'Create Book' %>
-      <% end %>
     </div>
     <div class="col-lg-8">
 <table class="table table-striped">

@@ -1,7 +1,6 @@
 class BookListsController < ApplicationController
 
-  def new
-  end
+
 
   def create
     @book_list = BookList.new(book_list_params)
@@ -23,9 +22,21 @@ class BookListsController < ApplicationController
     @user = @book_list.user
   end
 
-  def destroy
+  def edit
     @book_list = BookList.find(params[:id])
-    @book_list.destroy
+  end
+
+  def update
+    book_list = BookList.find(params[:id])
+    book_list.update(book_list_params)
+    redirect_to book_lists_path
+  end
+
+
+
+  def destroy
+    book_list = BookList.find(params[:id])
+    book_list.destroy
     redirect_to book_lists_path
   end
 
