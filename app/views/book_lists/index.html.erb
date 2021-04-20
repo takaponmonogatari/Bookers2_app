@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-lg-4">
   <%= render "users/list", book_list: @book_list, user: @user %>
+  <%= flash[:notice] %>
 
-
+<i class="fas fa-user-cog"></i>
     </div>
     <div class="col-lg-8">
 <table class="table table-striped">
