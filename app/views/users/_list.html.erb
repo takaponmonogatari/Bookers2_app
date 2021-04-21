@@ -1,3 +1,11 @@
+    <% if book_list.errors.any? %>
+      <%= book_list.errors.count %>error prohibited this obj from being saved:
+      <% book_list.errors.full_messages.each do |message| %>
+       <%= message %>
+      <% end %>
+    <% end %>
+
+
      <h1>User info</h1>
    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
 
@@ -8,7 +16,6 @@
       <%= link_to edit_user_path(user) do %>
 　     <span class="fas fa-user-cog"></span>
 　    <% end %>
-
 
 
 
