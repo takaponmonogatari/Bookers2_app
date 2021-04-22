@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user = current_user
-    @book_list = BookList.new
+    @book = Book.new
   end
 
   def show
     @user = User.find(params[:id])
-    @book_lists = @user.book_lists
-    @book_list = BookList.new
+    @books = @user.books
+    @book = Book.new
   end
 
   def edit
@@ -32,7 +32,9 @@ class UsersController < ApplicationController
    private
   def ensure_user
     @user = User.find(params[:id])
-    redirect_to user_path(current_user) unless @user == current_user
+    unless @user == current_user
+    redirect_to user_path(current_user)
+    end
   end
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
